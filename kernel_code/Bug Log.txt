@@ -1,0 +1,120 @@
+﻿	Bug log
+	Time
+	Who discover it
+	Bug description
+	Solution
+	Who solved it
+	Time spent debugging
+
+	3/10
+	Weili Liu
+	RTC interrupts not properly received, only one interrupts is received
+	EOI should be sent to both IRQ2 and IRQ8, only IRQ8 was sent previously
+	Yuhao Chen
+	One hour
+
+	3/10
+	Whole group
+	Paging not working properly
+	Video page table should use the same physical address for virtual address
+	Yichen Zhou
+	Two hours
+
+	3/10
+	Weili Liu
+	Not receiving any keyboard interrupts
+	Wrong index was used for keyboard interrupt handler in the IDE entry
+	Weili Liu
+	Two hours
+
+	3/13
+	Demo TA
+	Receiving double keyboard interrupts sometimes 
+	We accidentally used inb() function twice in a single interrupts, so deleting one solves the bug
+	Weili Liu
+	One hour
+
+	3/19
+	Yichen Zhou
+	Keyboard shift does not work correctly
+	Wrong way of setting flags
+	Weili Liu
+	One hour
+
+	3/25
+	Weili Liu
+	Terminal read can’t read in user input from keyboard buffer because the buffer is cleared when enter is pressed
+	A second backup buffer is used to store the input before clearing the main one and terminal write will use the second one to read inputs 
+	Weili Liu
+	20 mins
+
+	3/27
+	Demo TA
+	RTC read is not implemented 
+	Proper RTC read is implemented 
+	Jiacheng Zhang
+	1 hour
+
+	4/7
+	Yichen Zhou
+	 Passed in arguments does not implement the execution
+	Trash values in the argument buffer
+	Yichen Zou
+	30 mins
+
+	4/8
+	WeiliLiu, Yuhao Chen, Yichen Zhou
+	Context Switch does not work properly
+	Wrong way of restoring esp and ebp for current and parent pcb
+	Yichen Zhou
+	2 hours
+
+	4/16
+	Demo TA
+	Cat . prints one garbage character
+	Restricing directory_read to read up to only 32 characters
+	Weili Liu
+	10 mins
+
+	4/16
+	Demo TA
+	After finishing one process, it doesn’t jump to a new line
+	Restrcting the keyboard buffer size to 127 and always include an newline character at the end of the buffer
+	Weili Liu, Yuhao Chen, Yichen Zhou
+	10 mins
+
+	4/28
+	WeiliLiu, Yuhao Chen, Yichen Zhou
+	The running process write into another terminal
+	Let the Terminal read check the executing terminal
+	Yuhao Chen
+	One hour
+
+	4/28
+	Yichen Zhou
+	When switching between terminals, The thing showing on the screen is wrong
+	Map the video memory in a right way
+	Yuhao Chen, Yichen Zhou
+	30 mins
+
+	4/29
+	Yuhao Chen
+	The processes running in separate terminals are too lagging 
+	Enable the rtc interruption for every terminal
+	Yuhao Chen
+	30 mins
+
+	4/29
+	Yichen Zhou
+	The result of function showing on other terminals
+	Wrong tracking of the executing terminal
+	Yichen Zhou, Weili Liu, Yuhao Chen
+	One hour
+
+	4/30
+	WeiliLiu, Yuhao Chen, Yichen Zhou
+	The eighth time of running ‘ls’ cause Page Fault
+	A global pcb pointer is used which did not change properly with each process switch, 
+	hence the pcb pointers in file.c needs to change with each process to properly close each file for each process
+	Weili Liu
+	One hour

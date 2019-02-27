@@ -1,0 +1,53 @@
+boot.o: boot.S multiboot.h x86_desc.h types.h
+keyboard_wrapper.o: keyboard_wrapper.S
+paging_function.o: paging_function.S
+pit_wrapper.o: pit_wrapper.S
+rtc_wrapper.o: rtc_wrapper.S
+syscall_wrapper.o: syscall_wrapper.S
+x86_desc.o: x86_desc.S x86_desc.h types.h
+exceptions.o: exceptions.c multiboot.h types.h x86_desc.h lib.h \
+  keyboard.h i8259.h terminal.h syscall.h file.h rtc.h paging.h pcb.h \
+  paging_function.h syscall_wrapper.h signal.h debug.h tests.h \
+  exceptions.h
+file.o: file.c file.h lib.h types.h keyboard.h i8259.h terminal.h \
+  syscall.h pcb.h rtc.h x86_desc.h paging.h paging_function.h \
+  syscall_wrapper.h signal.h
+i8259.o: i8259.c i8259.h types.h lib.h keyboard.h terminal.h syscall.h \
+  file.h rtc.h paging.h pcb.h x86_desc.h paging_function.h \
+  syscall_wrapper.h signal.h
+idt.o: idt.c multiboot.h types.h x86_desc.h lib.h keyboard.h i8259.h \
+  terminal.h syscall.h file.h rtc.h paging.h pcb.h paging_function.h \
+  syscall_wrapper.h signal.h debug.h tests.h exceptions.h idt.h \
+  keyboard_wrapper.h rtc_wrapper.h pit_wrapper.h scheduling.h
+kernel.o: kernel.c multiboot.h types.h x86_desc.h lib.h keyboard.h \
+  i8259.h terminal.h syscall.h file.h rtc.h paging.h pcb.h \
+  paging_function.h syscall_wrapper.h signal.h debug.h tests.h idt.h \
+  scheduling.h
+keyboard.o: keyboard.c keyboard.h types.h lib.h terminal.h syscall.h \
+  file.h rtc.h i8259.h paging.h pcb.h x86_desc.h paging_function.h \
+  syscall_wrapper.h signal.h
+lib.o: lib.c lib.h types.h keyboard.h i8259.h terminal.h syscall.h file.h \
+  rtc.h paging.h pcb.h x86_desc.h paging_function.h syscall_wrapper.h \
+  signal.h
+paging.o: paging.c paging.h lib.h types.h keyboard.h i8259.h terminal.h \
+  syscall.h file.h rtc.h pcb.h x86_desc.h paging_function.h \
+  syscall_wrapper.h signal.h
+rtc.o: rtc.c rtc.h i8259.h types.h terminal.h lib.h keyboard.h paging.h \
+  signal.h syscall.h file.h pcb.h x86_desc.h paging_function.h \
+  syscall_wrapper.h
+scheduling.o: scheduling.c scheduling.h terminal.h types.h lib.h \
+  keyboard.h i8259.h paging.h signal.h syscall.h file.h rtc.h pcb.h \
+  x86_desc.h paging_function.h syscall_wrapper.h
+signal.o: signal.c signal.h types.h syscall.h lib.h keyboard.h i8259.h \
+  terminal.h paging.h pcb.h file.h rtc.h x86_desc.h paging_function.h \
+  syscall_wrapper.h
+syscall.o: syscall.c syscall.h types.h lib.h keyboard.h i8259.h \
+  terminal.h paging.h pcb.h signal.h file.h rtc.h x86_desc.h \
+  paging_function.h syscall_wrapper.h
+terminal.o: terminal.c terminal.h types.h lib.h keyboard.h i8259.h \
+  paging.h signal.h syscall.h file.h rtc.h pcb.h x86_desc.h \
+  paging_function.h syscall_wrapper.h
+tests.o: tests.c tests.h x86_desc.h types.h lib.h keyboard.h i8259.h \
+  terminal.h syscall.h file.h rtc.h paging.h pcb.h paging_function.h \
+  syscall_wrapper.h signal.h idt.h multiboot.h debug.h keyboard_wrapper.h \
+  rtc_wrapper.h
